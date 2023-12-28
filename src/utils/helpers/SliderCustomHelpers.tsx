@@ -64,7 +64,11 @@ export namespace SliderCustomHelpers{
             </Swiper>
         )
     }
-    const renderHero = (data: HerosCustomHelpers.SimplePropsHelper | HerosCustomHelpers.SimpleDescriptionPropsHelper | HerosCustomHelpers.LoginPropshelper) => {
+    const renderHero = (data: 
+        HerosCustomHelpers.SimplePropsHelper
+         | HerosCustomHelpers.SimpleDescriptionPropsHelper 
+         | HerosCustomHelpers.LoginPropshelper
+    ) => {
         switch (data.type) {
             case 'simple':
                 return <HerosCustomHelpers.simple {...(data as HerosCustomHelpers.SimplePropsHelper)} />;
@@ -72,6 +76,8 @@ export namespace SliderCustomHelpers{
                 return <HerosCustomHelpers.simpleDescription {...(data as HerosCustomHelpers.SimpleDescriptionPropsHelper)} />;
             case 'login':
                 return <HerosCustomHelpers.login {...(data as HerosCustomHelpers.LoginPropshelper)} />;
+            case 'custom-1':
+                return <HerosCustomHelpers.custom1 {...(data as HerosCustomHelpers.Custom1PropsHelper)} />;
             default:
                 return null;
         }
