@@ -81,7 +81,8 @@ const config: Config = {
           "success": "#00B33C",
           "warning": "#CCAA00",
           "error": "#B50032"
-        }
+        },
+        "matias": {}
       }
     ],
   },
