@@ -105,6 +105,17 @@ const config: Config = {
           "success": "#00B33C",
           "warning": "#CCAA00",
           "error": "#B50032"
+        },
+        "katia": {
+          "primary": "#003459", 
+          "secondary": "#007ea7",
+          "accent": "#8b80f9",
+          "neutral": "#ffffff",
+          "base-100": "#141414",  
+          "info": "#2ae6f3",                   
+          "success": "#59f159",
+          "warning": "#fac942",
+          "error": "#d43535"
         }
       }
     ],
