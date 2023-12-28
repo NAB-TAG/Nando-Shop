@@ -41,6 +41,7 @@ export namespace HerosCustomHelpers{
             </div>
         )
     }
+
     export interface LoginPropshelper{
         description: string;
         type: string;
@@ -75,6 +76,28 @@ export namespace HerosCustomHelpers{
                             </div>
                         </form>
                     </div>
+                </div>
+            </div>
+        )
+    }
+
+
+    // Crea tu hero aqui, Eres libre de diseñarlo a tu gusto, recuerda que en src/components/ads/AdsHome.tsx puedes regular su responsive a traves de su className, pero aqui puedes hacerlo mucho mas especifico por si quieres
+    // 1.si nesesitas una prop nueva agregala primero a la interface
+    export interface Custom1PropsHelper {
+        title: string;
+        description: string;
+        btnText: string;
+        type: string;
+    }
+    // 2.despues agregala en = ({nuevaProp,title, btnText, description}) =>
+    export const custom1: React.FC<Custom1PropsHelper> = ({title, btnText, description}) => {
+        return(
+            <div className="hero-content text-center bg-base-200 border-base-100 sm:border-5" style={{height: "inherit"}}>
+                <div className="max-w-md">
+                    <h1 className="text-2xl font-bold">{ title }</h1>
+                    <p className="py-6">{ description }</p>
+                    <button className="btn btn-primary">{ btnText }</button>
                 </div>
             </div>
         )
