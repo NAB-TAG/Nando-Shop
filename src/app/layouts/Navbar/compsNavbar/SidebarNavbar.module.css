@@ -2,3 +2,9 @@
     right: -85%;
     position: relative;
 }
+
+.navMenu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
