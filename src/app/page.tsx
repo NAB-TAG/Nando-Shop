@@ -1,8 +1,11 @@
 "use client"
 
+import AdsHome from "@/components/ads/AdsHome";
 import Hero from "@/components/heros/Hero";
-import ProductsList from "@/components/products/ProductsList";
+
 import ProductsOffers from "@/components/products/productsOffers/ProductsOffers";
+import ProductsRandom from "@/components/products/productsRandom/ProductsRandom";
+
 import { useEffect } from "react"
 
 export default function Home() {
@@ -19,8 +22,11 @@ export default function Home() {
         
 
           <Hero />
-          <ProductsOffers /> 
-          <ProductsList  />
+
+          <ProductsOffers />  
+          <ProductsRandom />
+          <AdsHome />
+
       </div>
     </>
   ) 

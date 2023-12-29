@@ -84,6 +84,39 @@ const config: Config = {
           "warning": "#FAE122",
           "error": "#e11d48",
         },
+        "bruno": {
+          "primary": "#0B0E37",
+          "secondary": "#2654A1",
+          "accent": "#3B0078",
+          "neutral": "#09090C",
+          "base-100": "#1E1E1E",
+          "info": "#137D9E",
+          "success": "#00B33C",
+          "warning": "#CCAA00",
+          "error": "#B50032"
+        },
+        "matias": {
+          "primary": "#0B0E37",
+          "secondary": "#2654A1",
+          "accent": "#3B0078",
+          "neutral": "#09090C",
+          "base-100": "#1E1E1E",
+          "info": "#137D9E",
+          "success": "#00B33C",
+          "warning": "#CCAA00",
+          "error": "#B50032"
+        },
+        "katia": {
+          "primary": "#003459", 
+          "secondary": "#007ea7",
+          "accent": "#8b80f9",
+          "neutral": "#ffffff",
+          "base-100": "#141414",  
+          "info": "#2ae6f3",                   
+          "success": "#59f159",
+          "warning": "#fac942",
+          "error": "#d43535"
+        }
       }
     ],
   },

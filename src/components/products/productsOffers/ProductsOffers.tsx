@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import { montserrat, anton, poiret_one, mitr, bungee, paytone_One } from "@/fonts/fonts";
+import { montserrat, anton, poiret_one, paytone_One } from "@/fonts/fonts";
 import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react";
 import style from './ProductsOffers.module.css';
@@ -17,7 +17,7 @@ const ProductsOffers: React.FC = () => {
         {id:3, subtitle: "subtitulo3", title: "titulo3", image: "/assets/images/products/17.png"},
         {id:4, subtitle: "subtitulo4", title: "titulo4", image: "/assets/images/products/18.png"},
         {id:5, subtitle: "subtitulo5", title: "titulo5", image: "/assets/images/products/12.png"},
-        {id:6, subtitle: "subtitulo5", title: "titulo5", image: "/assets/images/products/16.png"},
+        {id:6, subtitle: "subtitulo5", title: "tjitulo5", image: "/assets/images/products/16.png"},
         {id:7, subtitle: "subtitulo5", title: "titulo5", image: "/assets/images/products/16.png"},
     ];
     const selectedItem = items.find((item) => item.id === selectedId);

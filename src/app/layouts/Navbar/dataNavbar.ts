@@ -31,5 +31,8 @@ export const themes = [
     "dim",
     "nord",
     "sunset",
-    "nando"
+    "nando",
+    "bruno",
+    "matias",
+    "katia"
   ]
