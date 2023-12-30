@@ -20,7 +20,7 @@ function ProductsRandom() {
                         </p>
                         <div className="flex justify-between items-center pt-3 pb-2">
                             <a href="#"
-                                className="px-4 py-2 bg-red-600 hover:bg-red-800 text-center text-sm text-white rounded duration-300">
+                                className="btn btn-primary">
                                Agregar al carrito</a>
 
                             <FaHeart href="#" title="Add to Favorites" className="text-2xl text-gray-300 hover:text-red-500 duration-300"/>
