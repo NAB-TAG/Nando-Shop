@@ -21,7 +21,7 @@ const Register = () => {
 
                             <InputGroupAuth name="password" type="password" placeholder="Escribe tu Contraseña" title="Contraseña (Requerido)" className="w-1/2"/>
 
-                            <InputGroupAuth e="cpassword" type="password" placeholder="Confirma tu Contraseña" title="Confirma tu contraseña (Requerido)" className="w-1/2"/>
+                            <InputGroupAuth name="cpassword" type="password" placeholder="Confirma tu Contraseña" title="Confirma tu contraseña (Requerido)" className="w-1/2"/>
 
                             <div className="form-control border-[20px] border-base-100">
                                 <label className="label">
