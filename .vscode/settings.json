@@ -5,6 +5,7 @@
         "formatters",
         "documentation",
         "test",
-        "products"
+        "products",
+        "dashboard"
     ]
 }
