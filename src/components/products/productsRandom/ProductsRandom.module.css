@@ -158,3 +158,38 @@ then set the desired styles for .card-img. */
     transform: translateY(3px);
   }
   
+  .imgBx{
+    transform-origin: right;
+}
+.action{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.action li span{
+transition: 0.5s;
+}
+.action li{
+  transition: transform 0.5s;
+  transform: translateX(60px);
+}
+.conteinerImg:hover .action li{
+  transform: translateX(0px);
+}
+.action li:nth-child(1){
+  transition-delay: 0.15s;
+}
+.action li:nth-child(2){
+  transition-delay: 0.3s;
+}
+.action li span::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  transform: translateY(-50%) rotate(45deg);
+}

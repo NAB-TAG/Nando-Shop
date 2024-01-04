@@ -1,3 +1,4 @@
-.color{
-    color: brown;
+.imgBx{
+    transform-origin: right;
+    background-color: brown;
 }
