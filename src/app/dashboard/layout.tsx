@@ -1,17 +1,25 @@
 import React from "react"
+import type { Metadata } from 'next'
 
+// Metadatos: Fijate que cuando pasas de home al dashboard el nombre de la pestaña cambia
+export const metadata: Metadata = {
+    title: 'NandoShop - Dashboard',
+    description: 'Estas en el dashboard',
+}
+
+// Aqui 
 type LayoutProps = {
     children: React.ReactNode;
-    folder1: React.ReactNode;
-    folder2: React.ReactNode;
 }
-export default function RootLayout({ children,folder1, folder2 }: LayoutProps) { 
+export default function RootLayout({ children }: LayoutProps) { 
     return ( 
 
         <>
-        <div>{folder1}</div>
-        <div>{folder2}</div>
-        <div>{children}</div> 
+        <div>
+            Soy el componente padre (header)
+            <div>{children}</div> 
+            Soy el componente padre (footer)
+        </div>
         </>
     ) 
 }

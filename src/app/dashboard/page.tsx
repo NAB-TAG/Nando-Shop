@@ -1,6 +1,6 @@
 const Dashboard = () => {
     return(
-        <h1>asda</h1>
+        <h1>Estas en el dashboard</h1>
     )
 }
 
