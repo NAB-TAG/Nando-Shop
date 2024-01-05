@@ -2,13 +2,17 @@ import Image from "next/image";
 import ProductRandom from "./ProductsRandom.module.css"
 import { FaHeart } from "react-icons/fa6";
 import { FaCartArrowDown } from "react-icons/fa6";
+import { ProductPropsInterface } from "./ProductsRandom";
+import { MathHelpers } from "@/utils/helpers/MathHelpers";
+// interface ProductProps {
+//     id: number;
+//     image: string;
+//     // name: string;
+//     // price: number;
+//     // discount: number;
+// }
 
-interface ProductProps {
-    image: string;
-    name: string;
-}
-
-const ProductItem: React.FC<ProductProps> = ({image, name}) => {
+const ProductItem: React.FC<ProductPropsInterface> = ({ image, name, discount, price, id }) => {
     return(
         <div className="min-[340px]:w-full min-[450px]:w-1/2 md:w-1/3 lg:w-1/4  bg-base-200 border-[10px] border-base-100 rounded-lg">
             <div className={`${ProductRandom.conteinerImg} relative overflow-hidden rounded-tl-lg rounded-tr-lg`}>
@@ -38,11 +42,11 @@ const ProductItem: React.FC<ProductProps> = ({image, name}) => {
                 <h3 className="text-lg">{ name }</h3>
                 <div className="flex flex-row justify-between">
                     <div className="space-x-2 flex flex-col">
-                        <span className="text-2xl font-semibold text-primary">$600</span>
-                        <span className="text-sm line-through text-gray-500">$1000</span>
+                        <span className="text-2xl font-semibold text-primary">${ MathHelpers.discount( price, discount ) }</span>
+                        <span className="text-sm line-through text-gray-500">${ price }</span>
                     </div>
                     <div className="flex items-end">
-                        <span className="text-sm bg-primary p-1 rounded-2xl badge badge-primary h-min">-40%</span>
+                        <span className="text-sm bg-primary p-1 rounded-2xl badge badge-primary h-min">-{ discount }%</span>
                     </div>
                 </div>
                     
