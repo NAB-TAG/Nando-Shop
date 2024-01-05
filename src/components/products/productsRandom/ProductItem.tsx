@@ -37,7 +37,7 @@ const ProductItem = () => {
                         <span className="text-sm line-through text-gray-500">$1000</span>
                     </div>
                     <div className="flex items-end">
-                        <span className="text-sm bg-primary p-1 rounded-2xl badge-primary h-min">-40%</span>
+                        <span className="text-sm bg-primary p-1 rounded-2xl badge badge-primary h-min">-40%</span>
                     </div>
                 </div>
                     
