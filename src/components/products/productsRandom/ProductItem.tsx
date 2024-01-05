@@ -4,10 +4,11 @@ import { FaHeart } from "react-icons/fa6";
 import { FaCartArrowDown } from "react-icons/fa6";
 
 interface ProductProps {
-    image: string
+    image: string;
+    name: string;
 }
 
-const ProductItem: React.FC<ProductProps> = ({image}) => {
+const ProductItem: React.FC<ProductProps> = ({image, name}) => {
     return(
         <div className="min-[340px]:w-full min-[450px]:w-1/2 md:w-1/3 lg:w-1/4  bg-base-200 border-[10px] border-base-100 rounded-lg">
             <div className={`${ProductRandom.conteinerImg} relative overflow-hidden rounded-tl-lg rounded-tr-lg`}>
@@ -34,7 +35,7 @@ const ProductItem: React.FC<ProductProps> = ({image}) => {
 
 
             <div className="px-5 py-3 space-y-2">
-                <h3 className="text-lg">Super computadora 64GB</h3>
+                <h3 className="text-lg">{ name }</h3>
                 <div className="flex flex-row justify-between">
                     <div className="space-x-2 flex flex-col">
                         <span className="text-2xl font-semibold text-primary">$600</span>
