@@ -3,14 +3,18 @@ import ProductRandom from "./ProductsRandom.module.css"
 import { FaHeart } from "react-icons/fa6";
 import { FaCartArrowDown } from "react-icons/fa6";
 
-const ProductItem = () => {
+interface ProductProps {
+    image: string
+}
+
+const ProductItem: React.FC<ProductProps> = ({image}) => {
     return(
         <div className="min-[340px]:w-full min-[450px]:w-1/2 md:w-1/3 lg:w-1/4  bg-base-200 border-[10px] border-base-100 rounded-lg">
             <div className={`${ProductRandom.conteinerImg} relative overflow-hidden rounded-tl-lg rounded-tr-lg`}>
                 <div className="h-56">
                     <img
-                        className={`${ProductRandom.imgBx} hover:scale-110 transition-transform relative w-full h-full rounded-tl-lg rounded-tr-lg select-none object-contain`}
-                        src="/assets/images/products/3.png"
+                        className={`${ProductRandom.imgBx} hover:scale-110 transition-transform relative w-full h-full rounded-tl-lg rounded-tr-lg select-none object-cover`}
+                        src={`/assets/images/products/${image}`}
                         alt="Descripción de la imagen"
                     />
                 </div>

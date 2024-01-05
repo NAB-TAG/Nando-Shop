@@ -10,14 +10,18 @@ function ProductsRandom() {
     return (
         <>
             <div className="w-full h-auto my-2 p-2 flex flex-wrap">
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
+                <ProductItem image="19.png"/>
+                <ProductItem image="20.png"/>
+                <ProductItem image="21.png"/>
+                <ProductItem image="22.png"/>
+                <ProductItem image="23.png"/>
+                <ProductItem image="24.jpg"/>
+                <ProductItem image="25.png"/>
+                <ProductItem image="26.png"/>
+                <ProductItem image="19.png"/>
+                <ProductItem image="20.png"/>
+                <ProductItem image="21.png"/>
+                <ProductItem image="22.png"/>
             </div>
         </>
     );
