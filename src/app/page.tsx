@@ -25,7 +25,7 @@ export default function Home() {
 
           <ProductsOffers />  
           <ProductsRandom />
-          <AdsHome />
+          {/* <AdsHome /> */}
 
       </div>
     </>

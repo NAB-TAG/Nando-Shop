@@ -78,6 +78,7 @@ export namespace SliderCustomHelpers{
                 return <HerosCustomHelpers.login {...(data as HerosCustomHelpers.LoginPropshelper)} />;
             case 'custom-1':
                 return <HerosCustomHelpers.custom1 {...(data as HerosCustomHelpers.Custom1PropsHelper)} />;
+                            
             default:
                 return null;
         }

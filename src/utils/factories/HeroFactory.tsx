@@ -18,7 +18,7 @@ const HeroFactory: HeroFactoryInterface = {
                 break;
             case 'login':
                 return <HerosCustomHelpers.login {...props as HerosCustomHelpers.LoginPropshelper} />;
-                break;
+                break;  
             default:
                 return null
                 break;
