@@ -4,6 +4,7 @@ import { FaHeart } from "react-icons/fa6";
 import { FaCartArrowDown } from "react-icons/fa6";
 import { ProductPropsInterface } from "./ProductsRandom";
 import { MathHelpers } from "@/utils/helpers/MathHelpers";
+import React from "react";
 // interface ProductProps {
 //     id: number;
 //     image: string;
@@ -15,7 +16,7 @@ import { MathHelpers } from "@/utils/helpers/MathHelpers";
 const ProductItem: React.FC<ProductPropsInterface> = ({ image, name, discount, price, id }) => {
     return(
         <div className="min-[340px]:w-full min-[450px]:w-1/2 md:w-1/3 lg:w-1/4  bg-base-200 border-[10px] border-base-100 rounded-lg">
-            <div className={`${ProductRandom.conteinerImg} relative overflow-hidden rounded-tl-lg rounded-tr-lg`}>
+            {/* <div className={`${ProductRandom.conteinerImg} relative overflow-hidden rounded-tl-lg rounded-tr-lg`}>
                 <div className="h-56">
                     <img
                         className={`${ProductRandom.imgBx} hover:scale-110 transition-transform relative w-full h-full rounded-tl-lg rounded-tr-lg select-none object-cover`}
@@ -35,8 +36,8 @@ const ProductItem: React.FC<ProductPropsInterface> = ({ image, name, discount, p
                     
                 </ul>
 
-            </div>
-
+            </div> */}
+            <Media image={ image } />
 
             <div className="px-5 py-3 space-y-2">
                 <h3 className="text-lg">{ name }</h3>
@@ -55,5 +56,48 @@ const ProductItem: React.FC<ProductPropsInterface> = ({ image, name, discount, p
         </div>
     )
 }
+
+interface Imageable{
+    image: string;
+}
+const Media: React.FC<Imageable> = ({image}) => {
+    return(
+        <div className={`${ProductRandom.conteinerImg} relative overflow-hidden rounded-tl-lg rounded-tr-lg`}>
+            <div className="h-56">
+                <img
+                    className={`${ProductRandom.imgBx} hover:scale-110 transition-transform relative w-full h-full rounded-tl-lg rounded-tr-lg select-none object-cover`}
+                    src={`/assets/images/products/${image}`}
+                    alt="Descripción de la imagen"
+                />
+            </div>
+            <ul className={`${ProductRandom.action} absolute`}>
+                <li className="relative list-none w-10 h-10 bg-white flex justify-center items-center m-2 cursor-pointer text-sm rounded-lg group">
+                    <FaHeart className="text-primary" />
+                    <span className="absolute right-12 top-5 transform -translate-y-1/2 whitespace-nowrap px-2 py-2 bg-white text-primary rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out ">Agregar a favoritos.</span>
+                </li>
+                <li className="relative list-none w-10 h-10 bg-white flex justify-center items-center m-2 cursor-pointer text-sm rounded-lg group">
+                    <FaCartArrowDown className="text-primary" />
+                    <span className="absolute right-12 top-5 transform -translate-y-1/2 whitespace-nowrap px-2 py-2 bg-white text-primary rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">Agregar al carrito.</span>
+                </li>
+                
+            </ul>
+
+        </div>
+    )
+}
+    interface patheable {
+        file_path: string;
+    }
+    const ImageMedia: React.FC<Imageable & patheable> = ({ image, file_path }) => {
+        return(
+            <div className="h-56">
+                <Image
+                    className={`${ProductRandom.imgBx} transition-transform relative w-full h-full rounded-tl-lg rounded-tr-lg select-none object-cover`}
+                    src={`/assets/images/products/${file_path}/${image}`}
+                    alt="Descripción de la imagen"
+                />
+            </div>
+        )
+    }
 
 export default ProductItem;
