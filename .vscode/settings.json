@@ -6,6 +6,7 @@
         "documentation",
         "test",
         "products",
-        "dashboard"
+        "dashboard",
+        "ads"
     ]
 }
