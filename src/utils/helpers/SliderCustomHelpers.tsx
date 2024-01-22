@@ -64,6 +64,8 @@ export namespace SliderCustomHelpers{
             </Swiper>
         )
     }
+
+
     const renderHero = (data: 
         HerosCustomHelpers.SimplePropsHelper
          | HerosCustomHelpers.SimpleDescriptionPropsHelper 
