@@ -8,17 +8,17 @@ const BleachAccordion = () => {
                 Blanqueador
             </div>
             <div className="collapse-content flex gap-2 flex-wrap">
-                <button className="btn">
+                <button className="btn h-auto w-full mb-3 flex-col">
                     <TbBleach className="text-4xl"/>
                     <span>Se pueden usar blanqueadores clorados, incluida la lejía</span>
                 </button>
                 
-                <button className="btn">
+                <button className="btn h-auto w-full mb-3 flex-col">
                     <TbBleachOff className="text-4xl"/>
                     <span>No se pueden usar blanqueadores clorados.</span>
                 </button>
                 
-                <button className="btn">
+                <button className="btn h-auto w-full mb-3 flex-col">
                     <TbBleachNoChlorine className="text-4xl"/>
                     <span>Se pueden usar blanqueadores basados en oxígeno</span>
                 </button>

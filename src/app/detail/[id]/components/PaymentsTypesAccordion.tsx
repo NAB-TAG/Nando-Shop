@@ -8,7 +8,7 @@ const PaymentsTypesAccordion = () => {
             <div className="collapse-title text-xl font-medium">
                 Tipos de pagos
             </div>
-            <div className="collapse-content flex gap-2"> 
+            <div className="collapse-content flex flex-wrap gap-2"> 
                 <FaCcMastercard className="text-5xl"/>
                 <FaCcVisa className="text-5xl"/>
                 <SiAmericanexpress className="text-5xl"/>

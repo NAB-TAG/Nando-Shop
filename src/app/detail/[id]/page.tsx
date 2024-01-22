@@ -3,7 +3,6 @@ import SliderProduct from "./components/SliderProduct";
 import { anton, paytone_One, poiret_one } from "@/fonts/fonts";
 import { FaCartPlus, FaStar } from "react-icons/fa";
 import Image from "next/image";
-import { SiAmericanexpress, SiMercadopago } from "react-icons/si";
 
 export default function ProductDetail({ params }: { params: { id: string } }) {
     return (
@@ -55,7 +54,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                             Envios y Retornos
                         </div>
                         <div className="collapse-content"> 
-                            <p>hello</p>
+                            
                         </div>
                     </div>
 
@@ -73,7 +72,7 @@ import { FaHeartCirclePlus, FaRegCommentDots } from "react-icons/fa6";
 
 const GroupOptions = () => {
     return (
-        <div className="flex justify-between flex-row-reverse flex-wrap gap-1 mt-5 mb-10">
+        <div className="flex justify-between flex-row-reverse md:justify-start md:flex-row flex-wrap gap-1 mt-5 mb-10">
             <button className="btn p-1 md:p-3">
                 4.4 <FaStar />
                 <div className="badge badge-primary">En Stock</div>
