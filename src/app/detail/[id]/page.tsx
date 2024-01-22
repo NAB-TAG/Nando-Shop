@@ -72,7 +72,7 @@ import { FaHeartCirclePlus, FaRegCommentDots } from "react-icons/fa6";
 
 const GroupOptions = () => {
     return (
-        <div className="flex justify-between flex-row-reverse md:justify-start md:flex-row flex-wrap gap-1 mt-5 mb-10">
+        <div className="flex justify-between flex-row md:justify-start w-full flex-wrap gap-1 mt-5 mb-10">
             <button className="btn p-1 md:p-3">
                 4.4 <FaStar />
                 <div className="badge badge-primary">En Stock</div>
@@ -85,8 +85,8 @@ const GroupOptions = () => {
                 </div>
                 <span>Administrador</span>
             </a>
-            <button className="btn">
-                <FaRegCommentDots />
+            <button className="btn btn-primary fixed hidden md:initial bottom-3 right-3" style={{zIndex:100}}>
+                <FaRegCommentDots className="text-4xl"/>
             </button>
         </div>        
     )
@@ -111,10 +111,10 @@ const MoreButtons = () => {
                 <RiMoneyDollarCircleFill className="text-2xl"/>
                 Comprar Ahora
             </button>
-            <button className="btn btn-success">
+            <button className="btn btn-success hidden md:initial">
                 <FaCartPlus className="text-2xl text-base-100"/>
             </button>
-            <button className="btn btn-error">
+            <button className="btn btn-error hidden md:initial">
                 <FaHeartCirclePlus className="text-xl text-base-100"/>
             </button>
         </div>
