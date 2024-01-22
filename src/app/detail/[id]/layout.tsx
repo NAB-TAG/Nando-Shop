@@ -5,17 +5,17 @@ export default function LayoutProductDetail({ children }: { children: React.Reac
         <>
             {children}
             <div className="btm-nav md:hidden z-50">
-                <button className="bg-pink-200 text-pink-600">
+                <button className="btn-primary bg-primary ">
                     <FaHeartCirclePlus className="text-2xl"/>
-                    <span className="btm-nav-label">Agr.Favoritos</span>
+                    <span className="">Agr.Favoritos</span>
                 </button>
-                <button className="bg-blue-200 text-blue-600 border-blue-600">
+                <button className="btn-primary bg-primary  border-blue-600">
                     <FaRegCommentDots className="text-2xl"/>
-                    <span className="btm-nav-label">Comentar</span>
+                    <span className="">Comentar</span>
                 </button>
-                <button className="bg-teal-200 text-teal-600">
+                <button className="btn-primary bg-primary ">
                     <FaCartPlus className="text-2xl"/>
-                    <span className="btm-nav-label">Agr.Carrito</span>
+                    <span className="">Agr.Carrito</span>
                 </button>
             </div>
         </>
