@@ -13,8 +13,8 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                 {name: "Tienda", href: "/shop"},
                 {name: params.id, href: "#"}
             ]}/>
-            <div className="flex">
-                <div className="md:w-1/2 lg:w-1/3 ">
+            <div className="flex flex-wrap">
+                <div className="w-full md:w-1/2 lg:w-1/3 ">
                     <SliderProduct data={[
                         {href: "/assets/images/products/1.jpg"},
                         {href: "/assets/images/products/36.png"},
@@ -25,7 +25,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                     ]}/>
                 </div>
 
-                <div className="md:w-1/2 lg:w-2/3 pl-9">
+                <div className="w-full md:w-1/2 lg:w-2/3 mt-4 md:pl-9">
                     <h1 className={`${anton.className} text-primary text-5xl`}>NIKE AIR MAX</h1>
                     <h2 className={`${poiret_one.className} text-primary text-3xl font-semibold`}>Ropa Hombres</h2>
                     
@@ -73,12 +73,12 @@ import { FaHeartCirclePlus, FaRegCommentDots } from "react-icons/fa6";
 
 const GroupOptions = () => {
     return (
-        <div className="flex gap-1 mt-5 mb-10">
-            <button className="btn">
+        <div className="flex justify-between flex-row-reverse flex-wrap gap-1 mt-5 mb-10">
+            <button className="btn p-1 md:p-3">
                 4.4 <FaStar />
                 <div className="badge badge-primary">En Stock</div>
             </button>
-            <a href="" className="btn px-3 bg-base-150">
+            <a href="" className="btn px-1 md:px-3 bg-base-150">
                 <div className="avatar">
                     <div className="w-8 mask mask-squircle">
                         <Image src="/assets/images/avatars/user1.jpg" fill alt="Profile"/>
@@ -107,8 +107,8 @@ import PaymentsTypesAccordion from "./components/PaymentsTypesAccordion";
 import FeaturesAccordion from "./components/FeaturesAccordion";
 const MoreButtons = () => {
     return (
-        <div className="flex gap-2 mt-5">
-            <button className="btn btn-primary px-12">
+        <div className="flex flex-wrap gap-2 mt-5">
+            <button className="btn btn-primary px-4 md:px-12">
                 <RiMoneyDollarCircleFill className="text-2xl"/>
                 Comprar Ahora
             </button>

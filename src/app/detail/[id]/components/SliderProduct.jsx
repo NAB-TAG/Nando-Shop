@@ -21,7 +21,7 @@ const SliderProduct = ({data}) => {
 
 
     return (
-        <div className='sticky top-0 '>
+        <div className='sticky top-0 min-h-[500px] w-full'>
             <Swiper
                 spaceBetween={0}
                 navigation={true}
