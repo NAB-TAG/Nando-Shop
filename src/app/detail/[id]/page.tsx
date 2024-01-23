@@ -24,7 +24,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                     ]}/>
                 </div>
 
-                <div className="w-full md:w-1/2 lg:w-2/3 mt-4 md:pl-9">
+                <div className="w-full md:w-1/2 lg:w-2/3 mt-4 md:mt-0 md:pl-9">
                     <h1 className={`${anton.className} text-primary text-5xl`}>NIKE AIR MAX</h1>
                     <h2 className={`${poiret_one.className} text-primary text-3xl font-semibold`}>Ropa Hombres</h2>
                     
