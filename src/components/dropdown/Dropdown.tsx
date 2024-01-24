@@ -1,3 +1,4 @@
+'use client'
 import useClickOutside from '@/utils/hooks/useClickOutside';
 import React, { MouseEventHandler, useEffect, useRef, useState } from 'react';
 

@@ -1,5 +1,7 @@
 import React from "react"
 import type { Metadata } from 'next'
+import SidebarDashboard from "./components/SidebarDashboard";
+import NavbarDashboard from "./components/NavbarDashboard";
 
 // Metadatos: Fijate que cuando pasas de home al dashboard el nombre de la pestaña cambia
 export const metadata: Metadata = {
@@ -15,10 +17,10 @@ export default function RootLayout({ children }: LayoutProps) {
     return ( 
 
         <>
-        <div>
-            Soy el componente padre (header)
+        <div className="container mx-auto">
+            <NavbarDashboard />
             <div>{children}</div> 
-            Soy el componente padre (footer)
+            
         </div>
         </>
     ) 
