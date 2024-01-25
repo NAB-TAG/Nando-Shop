@@ -3,7 +3,7 @@
 
 const SidebarDashboard = () => {
     return (
-        <div className="drawer drawer-end">
+        <div className="drawer drawer-start">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
             
             <ButtonSidebar />
@@ -25,7 +25,7 @@ interface ButtonProps { children? : React.ReactNode }
 const ButtonSidebar: React.FC<ButtonProps> = ({ children }) => {
     return (
         <div className="drawer-content">
-            <label htmlFor="my-drawer-4" className="drawer-button btn btn-square btn-ghost ">
+            <label htmlFor="my-drawer-4" className="drawer-button btn btn-square btn-ghost flex justify-end">
                 { children ? children : 
                     <MdMenuOpen className="text-3xl" />
                 }

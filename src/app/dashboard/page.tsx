@@ -1,12 +1,14 @@
 import { Suspense } from "react"
-import Loading from "./loading"
+
 
 const Dashboard = () => {
     return(
-        <Suspense fallback={<Loading />}>
+        // <Suspense fallback={<Loading />}>
+            <p>
+                children
 
-            {/* <h1>Estas en el dashboard</h1> */}
-        </Suspense>
+            </p>
+        // </Suspense>
     )
 }
 
