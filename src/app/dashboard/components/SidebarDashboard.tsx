@@ -24,7 +24,7 @@ import { MdMenuOpen } from "react-icons/md";
 interface ButtonProps { children? : React.ReactNode }
 const ButtonSidebar: React.FC<ButtonProps> = ({ children }) => {
     return (
-        <div className="drawer-content">
+        <div className="drawer-content flex justify-end">
             <label htmlFor="my-drawer-4" className="drawer-button btn btn-square btn-ghost flex justify-end">
                 { children ? children : 
                     <MdMenuOpen className="text-3xl" />
