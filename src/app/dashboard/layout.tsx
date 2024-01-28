@@ -25,11 +25,11 @@ export default function RootLayout({children, folder1, folder2, widgets}: Layout
             <NavbarDashboard />
             {/* <div>
                 { widgets }
-                { folder1 }
             </div> */}
             {/* <div> */}
                 { widgets }
                 { folder1 }
+                { folder2 }
                 {/* {children} */}
             {/* </div>  */}
             

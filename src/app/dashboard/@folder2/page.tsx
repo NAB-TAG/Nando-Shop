@@ -1,5 +1,11 @@
+import CalendarFolder2 from "./components/CalendarFolder2";
+
+
 export default function Page() { 
     return (
-        <h4>Folder2</h4>
+        <div className="w-full lg:w-1/2">
+
+            <CalendarFolder2 />
+        </div>
     )
 }
