@@ -8,6 +8,8 @@ import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId, renderEventContent, renderSidebarEvent } from './event-utils'
 import { Calendar, DateSelectArg, EventApi } from '@fullcalendar/core/index.js'
 import { FullCalendarHelpers } from '@/utils/helpers/FullCalendarHelpers'
+import SimpleTable from '@/components/tables/SimpleTable'
+import { GroupForm } from '@/components/form/GroupsForm'
 
 const CalendarFolder2 = () => {
   const [weekendsVisible, setWeekendsVisible] = useState(true);
@@ -102,51 +104,44 @@ interface SidebarProps {
   currentEvents: EventApi[]
 }
 const Sidebar: React.FC<SidebarProps> = ({ handleWeekendsToggle, currentEvents}) => {
-  // console.log(currentEvents)
+  
+  const handleSubmit = (values:{}) => {
+    console.log(values)
+  }
+
   return (
     <div className='demo-app-sidebar'>
-      
-      
-      <div className='demo-app-sidebar-section'>
-        
-        <h2>All Events ({currentEvents.length})</h2>
+ 
+        <h2>Tienes un total de {currentEvents.length} eventos.</h2>
+
+        <GroupForm.searchFilter nameInput='search-dashboard-events' nameSelect='filter-dashboard-events' filterSelect={[{ id:1, name: "Titulo" }]} handleSubmit={handleSubmit} initialValues={{}}/>
 
         <div className="overflow-y-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>Titulo</th>
-                <th>Inicio</th>
-                <th>Final</th>
-              </tr>
-            </thead>
-            <tbody>
-                {currentEvents.map((event, index) => {
-                  console.log(event)
-                  return(
-                    <tr className="bg-base-200" key={index}>
-                      <th>{event.title}</th>
-                      <td>{event.startStr}</td>
-                      { event.endStr && 
-                        <td>{event.endStr}</td>
-                      }
-                        {/* <strong>Title:</strong> {event.title}, <strong>Date:</strong> {event.start} */}
-                    </tr>
-                  )
-                })}
+          <SimpleTable headerCols={['Titulo','Inicio','Final']}>
+            {currentEvents.map((event, index) => {
+              return(
+                <tr className="" key={index}>
+                  <th>{event.title}</th>
+                  <td>{event.startStr}</td>
+                  { event.endStr && 
+                    <td>{event.endStr}</td>
+                  }
+                </tr>
+              )
+            })}
+          </SimpleTable>
+          
               
-            </tbody>
-          </table>
+            
         </div>
 
-      </div>
+    
     </div>
   )
 }
 
+
 const handleDateSelect = ( selectInfo: DateSelectArg ) => {
-  console.log(selectInfo)
   let title = prompt('Please enter a new title for your event')
   let calendarApi = selectInfo.view.calendar
   
@@ -160,7 +155,8 @@ const handleDateSelect = ( selectInfo: DateSelectArg ) => {
       start: selectInfo.startStr,
       end: selectInfo.endStr,
       allDay: selectInfo.allDay
-    })
+    });
+    
   }
 }
 
