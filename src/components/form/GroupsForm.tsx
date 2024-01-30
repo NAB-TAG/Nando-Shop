@@ -25,15 +25,15 @@ export namespace GroupForm {
         return (
             <Formik initialValues={ initialValues } onSubmit={ handleSubmit }>
                 <Form>
-                    <div className="join">
-                        <div>   
-                            <InputText name={ nameInput } placeholder="Buscar..."/>
+                    <div className="join my-5 w-full">
+                        <div className="w-full">   
+                            <InputText name={ nameInput } placeholder="Buscar..." classname="w-full"/>
                         </div>
 
                         <SelectForm name={ nameSelect } items={ filterSelect } />
                         
                         <div className="indicator"> 
-                            <button className="btn join-item" type="submit">Buscar</button>
+                            <button className="btn join-item btn-primary" type="submit">Buscar</button>
                         </div>
                     </div>
                 </Form>
