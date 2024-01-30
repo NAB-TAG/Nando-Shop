@@ -20,7 +20,8 @@ export namespace GroupForm {
     interface SearchProps extends searchable, filterable, initialable, handleSubmitable {}
 
     export const searchFilter:React.FC<SearchProps> = 
-    ({ nameInput, filterSelect, initialValues, handleSubmit, nameSelect }) => {
+    ({ nameInput, filterSelect, initialValues, nameSelect, handleSubmit }) => {
+       
         return (
             <Formik initialValues={ initialValues } onSubmit={ handleSubmit }>
                 <Form>
