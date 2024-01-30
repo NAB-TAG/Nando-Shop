@@ -5,7 +5,7 @@ import Head from 'next/head'
 import Navbar from './layouts/Navbar/Navbar'
 import Footer from './layouts/Footer/Footer'
 import Login from './auth/login/page'
-
+import Providers from '@/redux/Provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,15 +27,18 @@ export default function RootLayout({
         <Head>
           <title>NandoShop</title>
         </Head>
-
-      <body className={inter.className}>
-        <Navbar />
-        <main className="pt-28">
-          {isLoggedIn ? children : <Login />}
-          
-        </main>
-        <Footer />
-      </body>
+      
+      <Providers>
+        <body className={inter.className}>
+          <Navbar />
+          <main className="pt-28">
+            {isLoggedIn ? children : <Login />}
+            
+          </main>
+          <Footer />
+        </body>
+      </Providers>
+      
     </html>
   )
 }

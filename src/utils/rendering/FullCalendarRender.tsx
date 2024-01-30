@@ -11,6 +11,10 @@ import interactionPlugin from '@fullcalendar/interaction'
 import { FullCalendarHelpers } from "../helpers/FullCalendarHelpers";
 import { EventApi } from "@fullcalendar/core/index.js";
 import { INITIAL_EVENTS, renderEventContent } from "@/app/dashboard/@folder2/components/event-utils";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCalendarDashboard } from "@/redux/calendarSlice";
+import { RootState } from "@/redux/store";
+
 
 export namespace FullCalendarRender {
 
@@ -20,10 +24,16 @@ export namespace FullCalendarRender {
       oklch: boolean | Dispatch<SetStateAction<boolean>>
     }
     export const Calendar:React.FC<calendarProps> = ({ weekendsVisible, currentEvents, oklch }) => {
+
       const [events, setEvents] = useState<EventApi[]>([]);
+
+      
+      const dispatch = useDispatch()
+
       const handleEvents = (events: EventApi[]) => {
         setEvents(currentEvents)
-        console.log(events)
+        dispatch(updateCalendarDashboard(events))
+        
       }
       return (
         <div className='demo-app-main'>
@@ -68,7 +78,8 @@ export namespace FullCalendarRender {
     }
 
     export const ListEvents:React.FC<FullCalendarInterface.ListEventsInterface> = ({ currentEvents }) => {
-      
+      const calendarEvents = useSelector((state: RootState) => state.calendars.calendar_dashboard_events)
+
         const handleSubmit = (values:{}) => {
             console.log(values)
         }
@@ -76,13 +87,13 @@ export namespace FullCalendarRender {
         return (
             <div className='demo-app-sidebar'>
          
-                <h2>Tienes un total de {currentEvents.length} eventos.</h2>
+                <h2>Tienes un total de {calendarEvents.length} eventos.</h2>
         
                 <GroupForm.searchFilter nameInput='search' nameSelect='filter' filterSelect={[{ id:1, name: "Titulo" },{ id:2, name: "Fecha" }]} handleSubmit={handleSubmit} initialValues={{search: "s", filter: "1"}}/>
         
                 <div className="overflow-y-auto">
                   <SimpleTable headerCols={['Titulo','Inicio','Final']}>
-                    {currentEvents.map((event, index) => {
+                    {calendarEvents.map((event, index) => {
                       return(
                         <tr className="" key={index}>
                           <th>{event.title}</th>
