@@ -112,7 +112,7 @@ export namespace FullCalendarRender {
           }
           setEvents(result)
       }
-      const searchQuery = "dog";
+      
         return (
             <div className='demo-app-sidebar'>
          

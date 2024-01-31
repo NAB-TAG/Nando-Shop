@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 const useOklchSupport = () => {
-    console.log("Inside useOklchSupport");  // Agregar para rastreo
 
   const [oklchSupport, setOklchSupport] = useState<boolean>(() => {
     if (typeof CSS !== 'undefined' && CSS.supports) {
