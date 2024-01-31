@@ -14,7 +14,7 @@ import { INITIAL_EVENTS, renderEventContent } from "@/app/dashboard/@folder2/com
 import { useDispatch, useSelector } from "react-redux";
 import { updateCalendarDashboard } from "@/redux/calendarSlice";
 import { RootState } from "@/redux/store";
-
+import Highlighter from "react-highlight-words";
 
 export namespace FullCalendarRender {
 
@@ -27,12 +27,22 @@ export namespace FullCalendarRender {
 
       const [events, setEvents] = useState<EventApi[]>([]);
 
-      
+      const calendarEvents = useSelector((state: RootState) => state.calendars.calendar_dashboard_events)
       const dispatch = useDispatch()
 
       const handleEvents = (events: EventApi[]) => {
-        setEvents(currentEvents)
-        dispatch(updateCalendarDashboard(events))
+        // console.log(currentEvents)
+        setEvents(events)
+
+        const eventosSerializados = events.map((evento: EventApi) => ({
+          allDay: evento.allDay,
+          title: evento.title,
+          start: evento.startStr,
+          end: evento.endStr,
+          id: evento.id
+      }));
+        
+        dispatch(updateCalendarDashboard(eventosSerializados))
         
       }
       return (
@@ -62,7 +72,7 @@ export namespace FullCalendarRender {
             selectMirror={true}
             dayMaxEvents={true}
             weekends={weekendsVisible}
-            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+            // alternatively, use the `events` setting to fetch from a feed
             select={FullCalendarHelpers.handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={FullCalendarHelpers.handleEventClick}
@@ -78,38 +88,89 @@ export namespace FullCalendarRender {
     }
 
     export const ListEvents:React.FC<FullCalendarInterface.ListEventsInterface> = ({ currentEvents }) => {
+      // Saco el store de redux
       const calendarEvents = useSelector((state: RootState) => state.calendars.calendar_dashboard_events)
-
-        const handleSubmit = (values:{}) => {
-            console.log(values)
-        }
-        
+      const [ events, setEvents ] = useState(calendarEvents);
+      const [ searchWord, setSearchWord ] = useState('')
+      // Cada vez que el store cambie, setea el state
+      useEffect(() => {
+        setEvents(calendarEvents)
+      }, [calendarEvents])
+      
+      // Buscador
+      const handleSubmit = (values:{search?:string , filter?: string}) => {
+          let search = values.search ? values.search:'';
+          let filter = values.filter ? values.filter:'1';
+            
+          let result;
+          if (filter == "1") {
+            result = calendarEvents.filter((object) => object.title.toLowerCase().includes(search)  )
+            setSearchWord(search)
+          }else{
+            result = calendarEvents.filter((object) => object.start.toLowerCase().includes(search)||object.end.toLowerCase().includes(search)   )
+            setSearchWord(search)
+          }
+          setEvents(result)
+      }
+      const searchQuery = "dog";
         return (
             <div className='demo-app-sidebar'>
          
-                <h2>Tienes un total de {calendarEvents.length} eventos.</h2>
+                <h2>Tienes un total de {events.length} eventos.</h2>
         
-                <GroupForm.searchFilter nameInput='search' nameSelect='filter' filterSelect={[{ id:1, name: "Titulo" },{ id:2, name: "Fecha" }]} handleSubmit={handleSubmit} initialValues={{search: "s", filter: "1"}}/>
+                <GroupForm.searchFilter nameInput='search' nameSelect='filter' filterSelect={[{ id:1, name: "Titulo" },{ id:2, name: "Fecha" }]} handleSubmit={handleSubmit} initialValues={{search: "", filter: "1"}}/>
         
                 <div className="overflow-y-auto">
                   <SimpleTable headerCols={['Titulo','Inicio','Final']}>
-                    {calendarEvents.map((event, index) => {
+                    {
+                    events.length > 0 ?
+                    events.map((event, index) => {
                       return(
                         <tr className="" key={index}>
-                          <th>{event.title}</th>
-                          <td>{event.startStr}</td>
-                          { event.endStr && 
-                            <td>{event.endStr}</td>
+                          <th>
+                            <Highlighter
+                              highlightClassName="YourHighlightClass" // Define your custom highlight class
+                              searchWords={[searchWord]}
+                              autoEscape={true}
+                              textToHighlight={ event.title } // Replace this with your text
+                            />
+                          </th>
+                          <td><Highlighter
+                              highlightClassName="YourHighlightClass" // Define your custom highlight class
+                              searchWords={[searchWord]}
+                              autoEscape={true}
+                              textToHighlight={ event.start } // Replace this with your text
+                            />
+                          </td>
+                          { event.end && 
+                            <td>
+                              <Highlighter
+                              highlightClassName="YourHighlightClass" // Define your custom highlight class
+                              searchWords={[searchWord]}
+                              autoEscape={true}
+                              textToHighlight={ event.end } // Replace this with your text
+                            />
+                            </td>
                           }
                         </tr>
                       )
-                    })}
-                  </SimpleTable>    
+                    })
+                    :
+                    
+                      <tr className="" >
+                        <th>No se encontraron resultados...</th>
+                        
+                      </tr>
+                    
+                  }
+                  </SimpleTable>  
+                  
+      
                 </div> 
             </div>
         )
     }
-
+    
     export const options:React.FC<FullCalendarInterface.OptionsInterface> = ({ handleWeekendsToggle, weekendsVisible }) => (
       <div className='demo-app-sidebar-section'>
 

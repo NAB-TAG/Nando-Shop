@@ -27,7 +27,7 @@ const Tab: React.FC<any> = ( props, {name}: {name:string} ) => {
         { defaultable ? 
             <>
                 <input type="radio" name={ name } role="tab" className="tab" aria-label={ aria_label } defaultChecked/>
-                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6 w-full min-h-96">
+                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6 w-full h-[650px] overflow-y-auto">
                     { tab }
                 </div> 
             </>
@@ -35,7 +35,7 @@ const Tab: React.FC<any> = ( props, {name}: {name:string} ) => {
             
             <>
                 <input type="radio" name={ name } role="tab" className="tab" aria-label={ aria_label } />
-                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6 w-full h-96">
+                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6 w-full h-[650px] overflow-y-auto">
                     { tab }
                 </div> 
             </>
