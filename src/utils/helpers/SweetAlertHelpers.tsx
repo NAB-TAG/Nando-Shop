@@ -30,6 +30,10 @@ export namespace SweetAlertHelper {
         Swal.fire({
             title: title,
             icon: icon,
+            confirmButtonColor: oklchSupport ? "oklch(var(--su))" : undefined,
+            cancelButtonColor: oklchSupport ? "oklch(var(--er))" : undefined,
+            background: oklchSupport ? "oklch(var(--b1))" : undefined,
+            color: oklchSupport ? "oklch(var(--p))" : undefined,
             input: "text",
             inputAttributes: {
               autocapitalize: "off"

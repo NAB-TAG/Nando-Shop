@@ -26,12 +26,12 @@ export namespace FullCalendarHelpers {
      * @param selectInfo 
      */
     export const handleDateSelect = ( selectInfo: DateSelectArg ) => {
-      // let title = prompt('Please enter a new title for your event')
+      
       let calendarApi = selectInfo.view.calendar
       
-      SweetAlertHelper.fetch('question','Escribe el nombre para tu evento',{},async (title) => {
+      SweetAlertHelper.fetch('question','Escribe el nombre para tu evento', {}, async (title) => {
         
-        calendarApi.unselect() // clear date selection
+        calendarApi.unselect()
         if (title) {
           calendarApi.addEvent({
             id: createEventId(),
