@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateCalendarDashboard } from "@/redux/calendarSlice";
 import { RootState } from "@/redux/store";
 import Highlighter from "react-highlight-words";
-
+import moment from 'moment'
 export namespace FullCalendarRender {
 
     interface calendarProps  {
@@ -100,7 +100,7 @@ export namespace FullCalendarRender {
       
       // Buscador
       const handleSubmit = (values:{search?:string , filter?: string}) => {
-          let search = values.search ? values.search:'';
+          let search = values.search ? values.search.toLowerCase():'';
           let filter = values.filter ? values.filter:'1';
             
           let result;
@@ -126,6 +126,8 @@ export namespace FullCalendarRender {
                     {
                     events.length > 0 ?
                     events.map((event, index) => {
+                      let start = formatDate(event.start, { locale: 'eu',month: 'numeric', year: 'numeric', day: 'numeric'});
+                      let end = formatDate(event.end, { locale: 'eu',month: 'numeric', year: 'numeric', day: 'numeric'});
                       return(
                         <tr className="" key={index}>
                           <th>
@@ -136,20 +138,21 @@ export namespace FullCalendarRender {
                               textToHighlight={ event.title } // Replace this with your text
                             />
                           </th>
-                          <td><Highlighter
-                              highlightClassName="YourHighlightClass" // Define your custom highlight class
+                          <td>
+                            <Highlighter
+                              highlightClassName="YourHighlightClass" 
                               searchWords={[searchWord]}
                               autoEscape={true}
-                              textToHighlight={ formatDate(event.start, { locale: 'es'}) } // Replace this with your text
+                              textToHighlight={ moment(start, "DD/M/YYYY").format("DD/MM/YYYY") } // 
                             />
                           </td>
                           { event.end && 
                             <td>
                               <Highlighter
-                              highlightClassName="YourHighlightClass" // Define your custom highlight class
+                              highlightClassName="YourHighlightClass" 
                               searchWords={[searchWord]}
                               autoEscape={true}
-                              textToHighlight={ formatDate(event.end, { locale: 'es'})} // Replace this with your text
+                              textToHighlight={ moment(end, "DD/M/YYYY").subtract(1, 'days').format("DD/MM/YYYY") } 
                             />
                             </td>
                           }
