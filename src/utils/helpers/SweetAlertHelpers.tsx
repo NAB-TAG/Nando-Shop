@@ -39,7 +39,7 @@ export namespace SweetAlertHelper {
               autocapitalize: "off"
             },
             showCancelButton: true,
-            confirmButtonText: "Look up",
+            confirmButtonText: "Crear Evento",
             showLoaderOnConfirm: true,
             preConfirm: async (result) => {
               
