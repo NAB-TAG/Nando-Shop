@@ -19,7 +19,7 @@ const CalendarFolder2 = () => {
       <Tab 
         name="calendar" 
         tab_0={<>
-          {/* <FullCalendarRender.options handleWeekendsToggle={ handleWeekendsToggle } weekendsVisible={ weekendsVisible }/> */}
+          <FullCalendarRender.options handleWeekendsToggle={ handleWeekendsToggle } weekendsVisible={ weekendsVisible }/>
           <FullCalendarRender.Calendar currentEvents={currentEvents} oklch={oklch} weekendsVisible={weekendsVisible} />
         </>} 
         name_0="Calendario"
