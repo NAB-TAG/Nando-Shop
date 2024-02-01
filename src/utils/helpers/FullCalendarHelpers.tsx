@@ -29,21 +29,27 @@ export namespace FullCalendarHelpers {
       
       let calendarApi = selectInfo.view.calendar
       
-      SweetAlertHelper.fetch('question','Escribe el nombre para tu evento', {}, async (title) => {
-        
-        calendarApi.unselect()
-        if (title) {
-          calendarApi.addEvent({
-            id: createEventId(),
-            title,
-            start: selectInfo.startStr,
-            end: selectInfo.endStr,
-            allDay: selectInfo.allDay
-          }); 
+      SweetAlertHelper.fetch(
+        'question',
+        'Escribe el nombre para tu evento', 
+        {}, 
+        async (title) => {
+          // Puede ser una llamada para la api, en este caso la estoy combinando con FullCalendar para crear un evento
+          calendarApi.unselect()
+          if (title) {
+            calendarApi.addEvent({
+              id: createEventId(),
+              title,
+              start: selectInfo.startStr,
+              end: selectInfo.endStr,
+              allDay: selectInfo.allDay
+            }); 
+          }
+        },
+        () => {
+          // Si todo esta ok manda una alerta de que fue creada con exito
+          SweetAlertHelper.normal('success', "El evento fue creado")
         }
-      },
-      () => {
-        SweetAlertHelper.normal('success', "El evento fue creado")
-      })
+      )
     }
 }

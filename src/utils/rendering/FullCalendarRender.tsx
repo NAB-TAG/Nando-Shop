@@ -9,7 +9,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { FullCalendarHelpers } from "../helpers/FullCalendarHelpers";
-import { EventApi } from "@fullcalendar/core/index.js";
+import { EventApi, formatDate } from "@fullcalendar/core/index.js";
 import { INITIAL_EVENTS, renderEventContent } from "@/app/dashboard/@folder2/components/event-utils";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCalendarDashboard } from "@/redux/calendarSlice";
@@ -60,6 +60,7 @@ export namespace FullCalendarRender {
               month:    'Mes',
               list:     'Lista'
             }}
+            eventClassNames={'overflow-x-hidden'}
             moreLinkText={"ver"}
             droppable={true}
             dragScroll={true}
@@ -139,7 +140,7 @@ export namespace FullCalendarRender {
                               highlightClassName="YourHighlightClass" // Define your custom highlight class
                               searchWords={[searchWord]}
                               autoEscape={true}
-                              textToHighlight={ event.start } // Replace this with your text
+                              textToHighlight={ formatDate(event.start, { locale: 'es'}) } // Replace this with your text
                             />
                           </td>
                           { event.end && 
@@ -148,7 +149,7 @@ export namespace FullCalendarRender {
                               highlightClassName="YourHighlightClass" // Define your custom highlight class
                               searchWords={[searchWord]}
                               autoEscape={true}
-                              textToHighlight={ event.end } // Replace this with your text
+                              textToHighlight={ formatDate(event.end, { locale: 'es'})} // Replace this with your text
                             />
                             </td>
                           }
