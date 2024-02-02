@@ -18,6 +18,7 @@ export namespace SweetAlertHelper {
             } 
         })
     }
+    
     export const fetch = ( 
       icon: SweetAlertIcon, 
       title: string, 
@@ -25,23 +26,15 @@ export namespace SweetAlertHelper {
       action?: (result:string)=> Promise<any>,
       success?: () => void
       ) => {
-        // let alertOptions = getAlertFetchOptions(oklchSupport, icon, title, customOptions, confirmation);
-
-        Swal.fire({
-            title: title,
-            icon: icon,
-            confirmButtonColor: oklchSupport ? "oklch(var(--su))" : undefined,
-            cancelButtonColor: oklchSupport ? "oklch(var(--er))" : undefined,
-            background: oklchSupport ? "oklch(var(--b1))" : undefined,
-            color: oklchSupport ? "oklch(var(--p))" : undefined,
-            input: "text",
+        let alertOptions = getAlertOptions(oklchSupport, icon, title, customOptions);
+        let swalOptions:SweetAlertOptions  = {
+            ...alertOptions,
             inputAttributes: {
               autocapitalize: "off"
             },
             showCancelButton: true,
-            confirmButtonText: "Crear Evento",
             showLoaderOnConfirm: true,
-            preConfirm: async (result) => {
+            preConfirm: async (result: any) => {
               
               try {
                   if (action) {
@@ -52,7 +45,8 @@ export namespace SweetAlertHelper {
               }
           },
             allowOutsideClick: () => !Swal.isLoading()
-          })
+        }
+        Swal.fire(swalOptions)
         .then((result) => {
             if (result.isConfirmed) {
                 

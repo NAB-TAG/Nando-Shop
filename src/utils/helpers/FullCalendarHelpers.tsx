@@ -32,7 +32,14 @@ export namespace FullCalendarHelpers {
       SweetAlertHelper.fetch(
         'question',
         'Escribe el nombre para tu evento', 
-        {}, 
+        {
+          input: "text",
+          inputValidator: (value: string) => {
+            return value ? null : '¡Por favor, ingrese un valor válido!';
+          },
+          confirmButtonText: "Crear un Evento",
+          cancelButtonText: "Cancelar",
+        }, 
         async (title) => {
           // Puede ser una llamada para la api, en este caso la estoy combinando con FullCalendar para crear un evento
           calendarApi.unselect()
