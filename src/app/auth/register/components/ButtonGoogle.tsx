@@ -11,7 +11,8 @@ const ButtonGoogle = () => {
             headers : {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
+            method: 'GET'
         })
             .then((response) => {
                 if (response.ok) {
