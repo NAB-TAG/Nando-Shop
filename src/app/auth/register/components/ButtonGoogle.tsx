@@ -5,7 +5,8 @@ import { FcGoogle } from "react-icons/fc";
 const ButtonGoogle = () => {
     const [loginUrl, setLoginUrl] = useState();
     useEffect(()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API}/api/auth`, {
+        const url = process.env.NEXT_PUBLIC_API + '/api/auth';
+        fetch(url, {
             headers : {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'

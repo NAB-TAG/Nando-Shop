@@ -17,7 +17,7 @@ const Google = () => {
         const fetchData = async () => {
             
 
-            fetch(`${process.env.NEXT_PUBLIC_API}/api/auth/callback${location && location}`, {
+            fetch(`${process.env.API_LARAVEL}/api/auth/callback${location && location}`, {
                 headers : {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
