@@ -12,6 +12,8 @@ const ButtonGoogle = () => {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
+            credentials: 'include',
+            next: {revalidate:3600},
             method: 'GET'
         })
             .then((response) => {
