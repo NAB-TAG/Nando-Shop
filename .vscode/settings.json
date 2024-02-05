@@ -8,6 +8,7 @@
         "products",
         "dashboard",
         "ads",
-        "product-detail"
+        "product-detail",
+        "auth"
     ]
 }
