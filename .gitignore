@@ -37,3 +37,6 @@ next-env.d.ts
 
 # iconos
 icons.txt
+
+# variable de entorno
+.env.local

@@ -1,7 +1,44 @@
+'use client'
+import Cookies from 'js-cookie';
 import Image from 'next/image';
-import React from 'react'
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react'
+
 
 const MyProfileNavbar = () => {
+    
+    
+    const token = Cookies.get('auth_token')
+    // console.log(token)
+    const [data,setData] = useState<{name:string}|null>(null) 
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API}/api/user`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                credentials: 'include',
+                next: { revalidate: 3600 }
+            });
+    
+            if (!response.ok) {
+                throw new Error(`Error fetching data: ${response.statusText}`);
+            }
+    
+            const responseData = await response.json();
+            setData(responseData);
+        } catch (error) {
+            console.error(error);
+            // Manejar el error según sea necesario
+        }
+    }
+    useEffect(()=>{
+        fetchData();
+    },[])
+    // console.log("fetch")
+
   return (
     <div className="dropdown dropdown-end z-40">
         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
@@ -10,6 +47,7 @@ const MyProfileNavbar = () => {
             </div>
         </div>
         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+            <span className="w-full text-center my-3">{ data && data.name }</span>
             <li>
             <a className="justify-between">
                 Ver mi Perfil
@@ -17,7 +55,7 @@ const MyProfileNavbar = () => {
             </a>
             </li>
             <li><a>Configuracion</a></li>
-            <li><a>Cerrar sesion</a></li>
+            <li><Link href={ '/auth/register' }>Registrarse</Link></li>
         </ul>
     </div>
   )

@@ -10,7 +10,7 @@ interface InputProps{
 
 const InputGroupAuth: React.FC<InputProps> = ({ title, type, placeholder, name, className }) => {
     return(
-        <div className={ `form-control ${ className } border-[20px] border-base-100` }>
+        <div className={ `form-control ${ className }` }>
             <label className="label">
                 <span className="label-text">{ title }</span>
             </label>
