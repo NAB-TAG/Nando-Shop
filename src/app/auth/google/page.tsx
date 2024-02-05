@@ -17,7 +17,7 @@ const Google = () => {
         const fetchData = async () => {
             
 
-            fetch(`${process.env.API_LARAVEL}/api/auth/callback${location && location}`, {
+            fetch(`https://nando-shop-api.vercel.app/api/api/auth/callback${location && location}`, {
                 headers : {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'

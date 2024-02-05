@@ -13,7 +13,7 @@ const MyProfileNavbar = () => {
     const [data,setData] = useState<{name:string}|null>(null) 
     const fetchData = async () => {
         try {
-            const response = await fetch(`${process.env.API_LARAVEL}/api/user`, {
+            const response = await fetch(`https://nando-shop-api.vercel.app/api/api/user`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
