@@ -31,7 +31,7 @@ const Google = () => {
             .then((data) => {
                 setLoading(false);
                 setData(data);
-                window.location.href = '/';
+                // window.location.href = '/';
                 
             });
         }
