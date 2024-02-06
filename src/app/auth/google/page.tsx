@@ -2,6 +2,7 @@
 // import { useSearchParams } from "next/navigation";
 // import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Cookies from 'js-cookie';
 // import { useLocation, useSearchParams } from 'react-router-dom';
 
 const Google = () => {
@@ -23,7 +24,8 @@ const Google = () => {
                     'Accept': 'application/json'
                 },
                 credentials: 'include',
-                next: {revalidate:3600}
+                next: {revalidate:3600},
+                method: 'GET'
             })
             .then((response) => {
                 return response.json();
@@ -31,6 +33,7 @@ const Google = () => {
             .then((data) => {
                 setLoading(false);
                 setData(data);
+                // Cookies.get('auth_token')
                 // window.location.href = '/';
                 
             });
