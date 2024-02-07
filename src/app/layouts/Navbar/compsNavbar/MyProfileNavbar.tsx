@@ -21,7 +21,8 @@ const MyProfileNavbar = () => {
                     'Accept': 'application/json',
                 },
                 credentials: 'include',
-                next: { revalidate: 3600 }
+                next: { revalidate: 3600 },
+                method: 'POST'
             });
     
             if (!response.ok) {
