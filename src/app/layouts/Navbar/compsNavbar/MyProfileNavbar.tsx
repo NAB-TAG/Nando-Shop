@@ -9,6 +9,8 @@ const MyProfileNavbar = () => {
     
     
     const token = Cookies.get('auth_token')
+    console.log(token)
+    console.log(document.cookie)
     // console.log(token)
     const [data,setData] = useState<{name:string}|null>(null) 
     const fetchData = async () => {
