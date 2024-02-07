@@ -22,7 +22,7 @@ const MyProfileNavbar = () => {
                 },
                 credentials: 'include',
                 next: { revalidate: 3600 },
-                method: 'POST'
+                method: 'GET'
             });
     
             if (!response.ok) {
@@ -31,7 +31,7 @@ const MyProfileNavbar = () => {
     
             const responseData = await response.json();
             setData(responseData);
-            
+
         } catch (error) {
             console.error(error);
             // Manejar el error según sea necesario
