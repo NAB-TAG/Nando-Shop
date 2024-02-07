@@ -16,28 +16,34 @@ const Google = () => {
     useEffect(() => {
         const location = window.location.search;
         const fetchData = async () => {
-            
-
-            fetch(`https://nando-shop-api.vercel.app/api/api/auth/callback${location && location}`, {
-                headers : {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                credentials: 'same-origin',
-                next: {revalidate:3600},
-                method: 'GET'
-            })
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
+            try {
+                const response = await fetch(`https://nando-shop-api.vercel.app/api/api/auth/callback${location && location}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    credentials: 'include',
+                    method: 'GET'
+                });
+        
+                if (!response.ok) {
+                    throw new Error('La solicitud falló');
+                }
+        
+                const data = await response.json();
+                
+                // Manejar las cookies
+                const cookies = response.headers.get('auth_token'); // Obtener las cookies de la respuesta
+                if (cookies) {
+                    document.cookie = cookies; // Establecer las cookies en el navegador
+                }
+        
                 setLoading(false);
                 setData(data);
-                // Cookies.get('auth_token')
-                // window.location.href = '/';
-                
-            });
-        }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
         
         fetchData();
         // console.log("fetch")
