@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 
 const Google = () => {
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState<{message:string}>({message:""});
+    const [data, setData] = useState<{message:string,csrf_token:string, auth_token:string}>({message:"",csrf_token:"",auth_token:""});
     const [count, setCount] = useState(1);
     // const router = useSearchParams();
     // console.log(router.getAll(,))
@@ -32,11 +32,9 @@ const Google = () => {
         
                 const data = await response.json();
                 
-                // Manejar las cookies
-                const cookies = response.headers.get('auth_token'); // Obtener las cookies de la respuesta
-                if (cookies) {
-                    document.cookie = cookies; // Establecer las cookies en el navegador
-                }
+                localStorage.setItem('auth_token', data.auth_token)
+                localStorage.setItem('csrf_token', data.csrf_token)
+                
         
                 setLoading(false);
                 setData(data);

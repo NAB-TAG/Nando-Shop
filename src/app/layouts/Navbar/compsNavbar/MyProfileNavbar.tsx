@@ -8,17 +8,17 @@ import React, { useEffect, useState } from 'react'
 const MyProfileNavbar = () => {
     
     
-    const token = Cookies.get('auth_token')
     // console.log(token)
     const [data,setData] = useState<{name:string}|null>(null) 
     const fetchData = async () => {
         try {
-            console.log(document.cookie)
-            console.log(token)
+            const token = localStorage.getItem('auth_token')
+            
             const response = await fetch(`https://nando-shop-api.vercel.app/api/api/user`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
+                    'Authorization': 'Bearer '+ token
                 },
                 credentials: 'include',
                 next: { revalidate: 3600 },
@@ -31,6 +31,7 @@ const MyProfileNavbar = () => {
     
             const responseData = await response.json();
             setData(responseData);
+            
         } catch (error) {
             console.error(error);
             // Manejar el error según sea necesario
