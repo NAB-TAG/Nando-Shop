@@ -9,12 +9,12 @@ const MyProfileNavbar = () => {
     
     
     const token = Cookies.get('auth_token')
-    console.log(token)
-    console.log(document.cookie)
     // console.log(token)
     const [data,setData] = useState<{name:string}|null>(null) 
     const fetchData = async () => {
         try {
+            console.log(document.cookie)
+            console.log(token)
             const response = await fetch(`https://nando-shop-api.vercel.app/api/api/user`, {
                 headers: {
                     'Content-Type': 'application/json',
