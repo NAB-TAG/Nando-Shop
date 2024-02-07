@@ -38,6 +38,7 @@ const Google = () => {
         
                 setLoading(false);
                 setData(data);
+                document.location.href = '/';
             } catch (error) {
                 console.error('Error:', error);
             }
