@@ -23,7 +23,7 @@ const Google = () => {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                credentials: 'include',
+                credentials: 'same-origin',
                 next: {revalidate:3600},
                 method: 'GET'
             })
