@@ -1,31 +1,54 @@
 'use client'
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import useSWR from 'swr'
 
 const ButtonGoogle = () => {
     const [loginUrl, setLoginUrl] = useState();
     useEffect(()=>{
-        console.log(process.env.NEXT_PUBLIC_API)
-        const url = 'https://nando-shop-api.vercel.app/api/api/auth';
-        fetch(url, {
-            headers : {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials: 'include',
-            next: {revalidate:3600},
-            method: 'GET'
-        })
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
+        
+        const url = process.env.NEXT_PUBLIC_API + '/api/auth';
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(url, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    withCredentials: true
+                });
+
+                if (!response.data) {
+                    throw new Error('La solicitud falló');
                 }
-                throw new Error('Something went wrong!');
-            })
-            .then((data) => {
-                setLoginUrl( data.url );
-            })
-            .catch((error) => console.error(error));
+
+                const data = response.data;
+                setLoginUrl( data.url )
+            } catch (error) {
+                
+            }
+        }
+        fetchData();
+        // fetch(url, {
+        //     headers : {
+        //         'Content-Type': 'application/json',
+        //         'Accept': 'application/json'
+        //     },
+        //     credentials: 'include',
+        //     next: {revalidate:3600},
+        //     method: 'GET'
+        // })
+        //     .then((response) => {
+        //         if (response.ok) {
+        //             return response.json();
+        //         }
+        //         throw new Error('Something went wrong!');
+        //     })
+        //     .then((data) => {
+        //         setLoginUrl( data.url );
+        //     })
+        //     .catch((error) => console.error(error));
     },[])
 
     return (

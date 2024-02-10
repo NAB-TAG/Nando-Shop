@@ -13,8 +13,8 @@ const MyProfileNavbar = () => {
     const fetchData = async () => {
         try {
             const token = localStorage.getItem('auth_token')
-            
-            const response = await fetch(`https://nando-shop-api.vercel.app/api/api/user`, {
+            const url = process.env.NEXT_PUBLIC_API + '/api/user'
+            const response = await fetch(url, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',

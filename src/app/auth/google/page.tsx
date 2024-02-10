@@ -1,6 +1,5 @@
 'use client'
-// import { useSearchParams } from "next/navigation";
-// import { useRouter } from "next/navigation";
+import axios from 'axios'
 import { useEffect, useState } from "react";
 import Cookies from 'js-cookie';
 // import { useLocation, useSearchParams } from 'react-router-dom';
@@ -15,27 +14,26 @@ const Google = () => {
     
     useEffect(() => {
         const location = window.location.search;
+        const url = process.env.NEXT_PUBLIC_API + '/api/auth/callback' + location && location;
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://nando-shop-api.vercel.app/api/api/auth/callback${location && location}`, {
+                const response = await axios.get(url, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
-                    credentials: 'include',
-                    method: 'GET'
+                    withCredentials: true
                 });
-        
-                if (!response.ok) {
+
+                if (!response.data) {
                     throw new Error('La solicitud falló');
                 }
-        
-                const data = await response.json();
+
+                const data = response.data;
                 
-                localStorage.setItem('auth_token', data.auth_token)
-                localStorage.setItem('csrf_token', data.csrf_token)
-                
-        
+                localStorage.setItem('auth_token', data.auth_token);
+                localStorage.setItem('csrf_token', data.csrf_token);
+
                 setLoading(false);
                 setData(data);
                 document.location.href = '/';
