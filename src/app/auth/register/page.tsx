@@ -6,15 +6,15 @@ const Register = () => {
     return(
         <div className="container flex justify-center mb-10 mx-auto">
             
-                <div className="hero-content flex-col lg:flex-row-reverse w-9/12">
-                    <div className="text-center lg:text-left w-1/2">
+                <div className="hero-content flex-col lg:flex-row-reverse w-full lg:w-9/12">
+                    <div className="text-center lg:text-left w-full md:w-1/2">
                         <h1 className="text-2xl font-bold">Crea tu cuenta!</h1>
                         <p className="py-6">Ya tienes una cuenta de google? </p>
                         <div className="mt-10 flex flex-col justify-center">
                             <ButtonGoogle />
                         </div>
                     </div>
-                    <div className="card shrink-0 shadow-2xl bg-base-100 w-1/2">
+                    <div className="card shrink-0 shadow-2xl bg-base-100 w-full md:w-1/2">
                         <form className="card-body flex gap-0">
                             
 
