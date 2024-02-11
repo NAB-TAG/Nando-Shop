@@ -1,46 +1,40 @@
 'use client'
-import Cookies from 'js-cookie';
+import { UserAdapter } from '@/adapters/UserAdapter';
+import { useAsync } from '@/utils/hooks/useAsync';
+import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 
 const MyProfileNavbar = () => {
+    const [data,setData] = useState<{name: string, email: string }|null>(null) 
     
-    
-    // console.log(token)
-    const [data,setData] = useState<{name:string}|null>(null) 
     const fetchData = async () => {
-        try {
-            const token = localStorage.getItem('auth_token')
-            const url = process.env.NEXT_PUBLIC_API + '/api/user'
-            const response = await fetch(url, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Authorization': 'Bearer '+ token
-                },
-                credentials: 'include',
-                next: { revalidate: 3600 },
-                method: 'GET'
-            });
-    
-            if (!response.ok) {
-                throw new Error(`Error fetching data: ${response.statusText}`);
-            }
-    
-            const responseData = await response.json();
-            setData(responseData);
+        const token = localStorage.getItem('auth_token');
+        const url = process.env.NEXT_PUBLIC_API + '/api/user';
 
-        } catch (error) {
-            console.error(error);
-            // Manejar el error según sea necesario
-        }
+        const response = await axios.get(url, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer '+ token
+            },
+            withCredentials: true,
+        });
+        
+        return response;
     }
-    useEffect(()=>{
-        fetchData();
-    },[])
-    // console.log("fetch")
+
+    const handleSuccess = (responseData: {name: string, email: string }) => {
+        setData(UserAdapter.get(responseData));
+    }
+
+    const handleReturn = () => {
+        // Lógica para realizar acciones de limpieza o desmontaje (opcional)
+    };
+
+    useAsync(fetchData , handleSuccess, handleReturn);
 
   return (
     <div className="dropdown dropdown-end z-40">

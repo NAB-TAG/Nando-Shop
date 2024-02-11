@@ -1,8 +1,6 @@
 'use client'
 import axios from 'axios'
 import { useEffect, useState } from "react";
-import Cookies from 'js-cookie';
-// import { useLocation, useSearchParams } from 'react-router-dom';
 
 const Google = () => {
     const [loading, setLoading] = useState(true);
@@ -13,10 +11,11 @@ const Google = () => {
     
     
     useEffect(() => {
-        const location = window.location.search;
-        const url = process.env.NEXT_PUBLIC_API + '/api/auth/callback' + location && location;
+        const location = window.location;
         const fetchData = async () => {
             try {
+                const url = `${process.env.NEXT_PUBLIC_API}/api/auth/callback${location && location.search}`
+                
                 const response = await axios.get(url, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -32,11 +31,10 @@ const Google = () => {
                 const data = response.data;
                 
                 localStorage.setItem('auth_token', data.auth_token);
-                localStorage.setItem('csrf_token', data.csrf_token);
 
                 setLoading(false);
                 setData(data);
-                document.location.href = '/';
+                // document.location.href = '/';
             } catch (error) {
                 console.error('Error:', error);
             }
