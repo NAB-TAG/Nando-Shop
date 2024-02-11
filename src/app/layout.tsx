@@ -11,7 +11,10 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'NandoShop - Inicio',
-  description: 'Compra lo que quieras',
+  description: 'Descubre lo último en moda y tecnología en nuestra tienda en línea. Explora una amplia selección de prendas de vestir de tendencia, desde elegantes conjuntos hasta prendas casuales para cualquier ocasión. Además, encuentra una variedad de productos electrónicos de vanguardia',
+  keywords: 'ropa, moda, mujer, hombre, niños, celulares, tablets, Notebooks, electrónica, gadgets, tecnología, tienda en línea',
+  authors: [{ name: 'Nando Agustin Bravo', url:'https://linkedin.com/in/nando-agustin-bravo-181347249'}],
+  applicationName: 'NandoShop',
 }
 
 export default function RootLayout({
