@@ -1,7 +1,8 @@
 import React from "react";
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import InputText from "./InputText";
 import SelectForm from "./SelectForm";
+import { FormInterface } from "./FormInterface";
 
 export namespace GroupForm {
     interface searchable {
@@ -40,5 +41,23 @@ export namespace GroupForm {
             </Formik>
         )
     }
+
+    export const InputLabel:React.FC<FormInterface.PropsInputLabel> = ({field}) => (
+        <label className="form-control w-full ">
+          <div className="label">
+            <span className="label-text">{ field.label }</span>
+          </div>
+              
+          <Field name={field.name} type={ field.type } placeholder={ field.placeholder } className="input input-bordered w-full"/>
+              
+      
+            {/* Mostrar mensaje de error */}
+          <div className="label">
+            <ErrorMessage name={ field.name } className="label-text-alt">
+              { msg => <span className="label-text-alt text-red-600">{ msg }</span> }
+            </ErrorMessage>
+          </div>
+        </label>
+      )
 
 }

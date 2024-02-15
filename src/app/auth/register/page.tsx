@@ -4,7 +4,7 @@ import FormFormik from "@/components/form/FormFormik"
 import ValidationSchema from "./components/ValidationSchema"
 import { Fields, initialValues } from "./constants/data"
 
-
+// Componente Principal
 const Register = () => {
     return(
         <div className="container flex justify-center mb-10 mx-auto">  
@@ -16,6 +16,7 @@ const Register = () => {
     )
 }
 
+// Cabecera del Componente Principal
 const Header = () => (
     <div className="text-center lg:text-left w-full md:w-1/2">
         <h1 className="text-2xl font-bold">Crea tu cuenta!</h1>
@@ -26,8 +27,7 @@ const Header = () => (
     </div>
 )
 
-
-
+// Renderizado del formulario y su logica de manejo
 const Form:React.FC = () => {
     
     function handleSubmit(values?: any) {
@@ -36,7 +36,7 @@ const Form:React.FC = () => {
 
     return (
         <div className="card shrink-0 shadow-2xl bg-base-100 w-full md:w-1/2">
-            {FormFormik(Fields ,initialValues, handleSubmit, ValidationSchema)}
+            {FormFormik(Fields ,initialValues, handleSubmit, ValidationSchema, "Crear Cuenta")}
         </div>
     )
 }

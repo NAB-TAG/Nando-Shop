@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-const ValidationSchema = Yup.object().shape({
+const ValidationSchema:Yup.AnyObjectSchema = Yup.object().shape({
     email: Yup.string().email('Email Invalido').required('El email es requerido'),
     password: Yup.string()
         .min(8,'La contraseña debe tener minimo 8 caracteres')
