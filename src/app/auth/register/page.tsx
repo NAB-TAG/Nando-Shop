@@ -1,31 +1,18 @@
 "use client"
-import ButtonGoogle from "./components/ButtonGoogle"
 import FormFormik from "@/components/form/FormFormik"
 import ValidationSchema from "./components/ValidationSchema"
 import { Fields, initialValues } from "./constants/data"
+import Header from "./components/Header"
 
 // Componente Principal
 const Register = () => {
     return(
-        <div className="container flex justify-center mb-10 mx-auto">  
-            <div className="hero-content flex-col lg:flex-row-reverse w-full lg:w-9/12">
-                <Header />
-                <Form />
-            </div>
-        </div>
+        <>
+            <Header />
+            <Form />
+        </>
     )
 }
-
-// Cabecera del Componente Principal
-const Header = () => (
-    <div className="text-center lg:text-left w-full md:w-1/2">
-        <h1 className="text-2xl font-bold">Crea tu cuenta!</h1>
-        <p className="py-6">Ya tienes una cuenta de google? </p>
-        <div className="mt-10 flex flex-col justify-center">
-            <ButtonGoogle />
-        </div>
-    </div>
-)
 
 // Renderizado del formulario y su logica de manejo
 const Form:React.FC = () => {
