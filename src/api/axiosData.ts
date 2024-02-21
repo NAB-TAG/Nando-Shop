@@ -29,25 +29,23 @@ export namespace AxiosData {
         })
 
     }
-    export const PostResponse = async ( path:string, data:any, handle:any ) => {
+    export const PostResponse = async (path: string, data: any, handle: any) => {
         const API_LARAVEL = ApisConstant.backendLaravel;
-
         const url = API_LARAVEL + path;
-
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-              'Content-Type': 'application/json',
-              'X-XSRF-Token': `${localStorage.getItem('csrf_token')}`
-            },
-            credentials:'include'
-          })
-          .then(response => {
-              return response.json();
-          })
-          .then(dataResponse => {
-              handle(dataResponse)
-          })
-    }
+    
+        try {
+            const response = await axios.post(url, data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-XSRF-Token': `${localStorage.getItem('csrf_token')}`
+                },
+                withCredentials: true,
+                withXSRFToken:true
+            });
+            handle(response.data);
+        } catch (error) {
+            // Manejo de errores aquí
+            console.error('Error:', error);
+        }
+    };
 }
