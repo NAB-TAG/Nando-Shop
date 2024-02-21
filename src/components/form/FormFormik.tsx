@@ -1,5 +1,5 @@
 'use client'
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import * as Yup from 'yup';
 import React from "react";
 import { GroupForm } from "./GroupsForm";
@@ -38,7 +38,7 @@ const FormFormik = (
         { Fields.map((field, index) => (
           <GroupForm.InputLabel field={field} key={index}/>
         )) }
-        
+          <Field name="_token" value={localStorage.getItem("csrf_token")}/>
         <div className="form-control mt-6">
             <button type="submit" className="btn btn-primary">{ buttonText }</button>
         </div>
