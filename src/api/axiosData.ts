@@ -29,4 +29,23 @@ export namespace AxiosData {
         })
 
     }
+    export const PostResponse = async ( path:string, data:any, handle:any ) => {
+        const API_LARAVEL = ApisConstant.backendLaravel;
+
+        const url = API_LARAVEL + path;
+
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+              'Content-Type': 'application/json' // Especifica que el cuerpo es JSON
+            },
+          })
+          .then(response => {
+              return response.json();
+          })
+          .then(dataResponse => {
+              handle(dataResponse)
+          })
+    }
 }
