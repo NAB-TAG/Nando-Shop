@@ -2,6 +2,7 @@
 
 import Form from "./components/Form"
 import Header from "./components/Header"
+import Prueba from "./components/Prueba"
 
 // Componente Principal
 const Register = () => {
@@ -9,6 +10,7 @@ const Register = () => {
         <>
             <Header />
             <Form />
+            {/* <Prueba /> */}
         </>
     )
 }

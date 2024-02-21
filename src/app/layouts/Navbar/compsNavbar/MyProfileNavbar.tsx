@@ -12,7 +12,7 @@ const MyProfileNavbar = () => {
     
     const fetchData = async () => {
         const token = localStorage.getItem('auth_token');
-        const url = process.env.NEXT_PUBLIC_API + '/api/user';
+        const url = process.env.NEXT_PUBLIC_API + '/api/auth/user';
 
         const response = await axios.get(url, {
             headers: {

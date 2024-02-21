@@ -23,8 +23,10 @@ export namespace AxiosData {
 
         const url = API_LARAVEL + path;
 
-        const response = await axios.post(url, data);
+        await axios.post(url, data)
+        .catch(function(error){
+            return error;
+        })
 
-        return response;
     }
 }
