@@ -37,7 +37,6 @@ export namespace AxiosData {
             const response = await axios.post(url, data, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-XSRF-Token': `${localStorage.getItem('csrf_token')}`
                 },
                 withCredentials: true,
                 withXSRFToken:true
