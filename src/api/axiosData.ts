@@ -38,8 +38,10 @@ export namespace AxiosData {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
-              'Content-Type': 'application/json' // Especifica que el cuerpo es JSON
+              'Content-Type': 'application/json',
+              'X-XSRF-Token': `${localStorage.getItem('csrf_token')}`
             },
+            credentials:'include'
           })
           .then(response => {
               return response.json();
