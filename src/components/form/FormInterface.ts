@@ -5,7 +5,8 @@ export namespace FormInterface {
             type:string, 
             name:string, 
             placeholder?:string, 
-            label?:string 
+            label?:string,
+            value?: string
         }
     }
 }

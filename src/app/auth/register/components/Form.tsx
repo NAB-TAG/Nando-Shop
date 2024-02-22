@@ -5,7 +5,7 @@ import { AxiosData } from "@/api/axiosData";
 import { PathsApi } from "@/api/PathsApi";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ApisConstant } from "@/utils/constants/ApisConstants";
+
 const Form:React.FC = () => {
     
     function handleSubmit(values?: any) {

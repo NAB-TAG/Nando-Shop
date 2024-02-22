@@ -33,18 +33,18 @@ export namespace AxiosData {
         const API_LARAVEL = ApisConstant.backendLaravel;
         const url = API_LARAVEL + path;
     
-        try {
-            const response = await axios.post(url, data, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                withCredentials: true,
-                withXSRFToken:true
-            });
-            handle(response.data);
-        } catch (error) {
-            // Manejo de errores aquí
-            console.error('Error:', error);
-        }
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+              'Content-Type': 'application/json' // Especifica que el cuerpo es JSON
+            },
+          })
+          .then(response => {
+              return response.json();
+          })
+          .then(dataResponse => {
+              handle(dataResponse)
+          })
     };
 }

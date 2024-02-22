@@ -1,7 +1,7 @@
 export const initialValues = {
     email: "",
     password: "",
-    cpassword: ""
+    cpassword: "",
 }
 
 export const Fields = [

@@ -1,7 +1,7 @@
 'use client'
-import { Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import * as Yup from 'yup';
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { GroupForm } from "./GroupsForm";
 
 /**
@@ -21,14 +21,10 @@ const FormFormik = (
   buttonText: string
 ) => {
 
-  const [token, setToken] = useState<string|null>(null)
-
   const submit = (values: any) => {
     handleSubmit(values)
   }
-  useEffect(()=>{
-    setToken(localStorage.getItem("csrf_token"));
-  },[])
+  
 
   return (
     <Formik
@@ -43,7 +39,7 @@ const FormFormik = (
         { Fields.map((field, index) => (
           <GroupForm.InputLabel field={field} key={index}/>
         )) }
-          <Field name="_token" value={token ? token : ''} />
+          
         <div className="form-control mt-6">
             <button type="submit" className="btn btn-primary">{ buttonText }</button>
         </div>

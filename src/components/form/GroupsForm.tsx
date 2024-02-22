@@ -48,7 +48,7 @@ export namespace GroupForm {
             <span className="label-text">{ field.label }</span>
           </div>
               
-          <Field name={field.name} type={ field.type } placeholder={ field.placeholder } className="input input-bordered w-full"/>
+          <Field name={field.name} type={ field.type } placeholder={ field.placeholder } className="input input-bordered w-full" value={field.value}/>
               
       
             {/* Mostrar mensaje de error */}
